@@ -46,6 +46,7 @@ def tfidf_pred(cate, test):
     data_tfidf = tfidf.fit_transform(meta_file)
     similarities =  data_tfidf.toarray()[0] * data_tfidf[1:,].T
 
+    # y = dict (zip(meta_brand, similarities))
     y = dict (zip(meta_file[1:], similarities))
     x = sorted(y.items(), key = lambda x: x[1], reverse = True)
     x_df = pd.DataFrame(x, columns=['goods_name','score'])
